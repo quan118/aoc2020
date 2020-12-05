@@ -6,6 +6,9 @@ def getSeatId(line):
       row = (rowLo + rowHi) // 2
       rowHi = row
     elif c == 'B':
+      # python 3 rounding is banker's rounding (round half to even).
+      # Ex: round(4.5) == 4, round(5.5) == 6
+      # We add 0.1 to make it always round 0.5 up 
       row = round((rowLo + rowHi + 0.1) / 2)
       rowLo = row
     elif c == 'R':
@@ -17,7 +20,7 @@ def getSeatId(line):
   return row*8+col
 
 if __name__=="__main__":
-  f = open("day06_input1.txt")
+  f = open("day05_input1.txt")
 
   maxId = -1
   seatIds = []
